@@ -24,12 +24,20 @@ def upload():
     pic = request.files['pic']
     class_type = (request.form.to_dict()['attrib'])
     if not pic:
-        return 'No pic uploaded!', 400
+        return {
+        'success': False,
+        'message': 'File not uploaded',
+        'resCode': 400
+    }
 
     filename = secure_filename(pic.filename)
     mimetype = pic.mimetype
     if not filename or not mimetype:
-        return 'Bad upload!', 400
+        return {
+        'success': False,
+        'message': 'Bad upload.',
+        'resCode': 400
+    }
 
     img = Img(img=pic.read(), name=filename, mimetype=mimetype, class_type = class_type)
     db.session.add(img)
