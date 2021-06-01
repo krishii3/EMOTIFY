@@ -7,7 +7,7 @@
     <title>uploadFile</title>
 </head>
 <body>
-    <form id="uploadForm"> 
+    <form id="uploadForm" method="POST" action="/upload" enctype="multipart/form-data"> 
         <input type="file" name="pic" required/>
         <select name = "attrib" required>
             <option>select</option>
@@ -21,7 +21,7 @@
         </select>
         <input type="submit" value="Upload"/>
      </form>
-     <script>
+     <!-- <script>
          const form=document.querySelector('uploadForm')
          form.addEventListener('submit',(e)=>{
              e.preventDefault()
@@ -33,7 +33,7 @@
              fetch('/upload',{
                  method: 'POST',
                  headers:{
-                     'Content-Type':'multipart/form-data'
+                     'Content-Type':'application/x-www-form-urlencoded'
                  },
                  body:JSON.stringyfy(data)
              })
@@ -47,6 +47,6 @@
              })
          })
          
-     </script>
+     </script> -->
 </body>
 </html>

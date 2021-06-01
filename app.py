@@ -5,7 +5,6 @@ from db import db_init, db
 from model import Img
 
 app = Flask(__name__)
-# SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///img.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db_init(app)
@@ -23,10 +22,7 @@ def uploadFile():
 @app.route('/upload', methods=['POST'])
 def upload():
     pic = request.files['pic']
-    # # class_type=json.loads(request.form.get('attrib'))
-    # data=json.loads(request.data)
-    # print(data)
-    #return
+    class_type = (request.form.to_dict()['attrib'])
     if not pic:
         return 'No pic uploaded!', 400
 
@@ -35,11 +31,15 @@ def upload():
     if not filename or not mimetype:
         return 'Bad upload!', 400
 
-    img = Img(img=pic.read(), name=filename, mimetype=mimetype , class_type=class_type)
+    img = Img(img=pic.read(), name=filename, mimetype=mimetype, class_type = class_type)
     db.session.add(img)
     db.session.commit()
 
-    return 'Img Uploaded!', 200
+    return {
+        'success': True,
+        'message': 'Hogyi h upload.',
+        'resCode': 200
+    }
 
 
 @app.route('/<int:id>')
