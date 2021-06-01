@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uploadFile</title>
+</head>
+<body>
+    <form id="uploadForm"> 
+        <input type="file" name="pic" required/>
+        <select name = "attrib" required>
+            <option>select</option>
+            <option value="sad">sad</option>
+            <option value="happy">happy</option>
+            <option value="angry">angry</option>
+            <option value="surprised">surprised</option>
+            <option value="fearful">fearful</option>
+            <option value="neutral">neutral</option>
+            <option value="disgusted">disgusted</option>
+        </select>
+        <input type="submit" value="Upload"/>
+     </form>
+     <script>
+         const form=document.querySelector('uploadForm')
+         form.addEventListener('submit',(e)=>{
+             e.preventDefault()
+             const formData =  new FormData(form)   
+             const data= {
+                 pic: formData.get('pic'),
+                 attrib: formData.get('attrib')
+             }
+             fetch('/upload',{
+                 method: 'POST',
+                 headers:{
+                     'Content-Type':'multipart/form-data'
+                 },
+                 body:JSON.stringyfy(data)
+             })
+             .then(res=>res.json())
+             .then(data=>{
+                 console.log(data)
+
+             })
+             .catch(e=>{
+                 console.log(e)
+             })
+         })
+         
+     </script>
+</body>
+</html>

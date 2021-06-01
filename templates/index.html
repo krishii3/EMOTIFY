@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMOTIFY</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='./css/style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class = "header">
+            <h1>EMOTIFY</h1>
+        </div>
+        <div class = "canvas">
+            <div id="leftpart" class= "leftpart">
+                <div id="photobox" class= "photobox">
+                    *PHOTO HERE*
+                    
+                </div>
+            </div>
+            <div id="rightpart" class= "rightpart">
+                <div class="row">
+                    <button id="btnSURPRISED" class="btn SURPRISED">SURPRISED</button>
+                    <button id="btnDISGUSTED" class="btn DISGUSTED">DISGUSTED</button>
+                    <button id="btnNEUTRAL" class="btn NEUTRAL">NEUTRAL</button>
+                </div>
+                <div class="row">
+                    <button id="btnANGRY" class="btn ANGRY">ANGRY</button>
+                    <button id="btnSAD" class="btn SAD">SAD</button>
+                    <button id="btnHAPPY" class="btn HAPPY">HAPPY</button>
+                    <button id="btnFEARFUL" class="btn FEARFUL">FEARFUL</button>
+                </div>   
+                
+            </div>
+            
+        </div>
+
+        <div class="controller">
+            <div class="timer">
+                <h4>timer :&nbsp;&nbsp;</h4>
+                <div class="timer__bar"  >
+                    <div id="timerBar">
+                    </div>
+                </div>
+                <div class="timerText">
+                    <span id="time">05:00</span>
+                </div>
+            </div>
+            <div class="counter">
+                <h4> &#x2605; <span id="counter">0</span></h4>
+            </div>
+            <div class="next">
+                <button class="btn next--btn" id="next">next</button>
+            </div>
+            <div class="end">
+                <button class="btn end--btn" id="end">end</button>
+            </div>
+        </div>
+
+    </div>
+ 
+</body>
+</html>
