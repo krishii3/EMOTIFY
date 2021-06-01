@@ -15,8 +15,7 @@
         <div class = "canvas">
             <div id="leftpart" class= "leftpart">
                 <div id="photobox" class= "photobox">
-                    *PHOTO HERE*
-                    
+                    <img class="randImage" src="/getRandomImage" alt="RandomImage">
                 </div>
             </div>
             <div id="rightpart" class= "rightpart">
@@ -59,6 +58,6 @@
         </div>
 
     </div>
- 
+    <script src="{{ url_for('static',filename='./JS/app.js')}}"></script>
 </body>
 </html>

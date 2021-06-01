@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 import json
 from db import db_init, db
 from model import Img
+import random
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///img.db'
@@ -50,13 +51,30 @@ def upload():
     }
 
 
-@app.route('/<int:id>')
+@app.route('/getImage/<int:id>')
 def get_img(id):
     img = Img.query.filter_by(id=id).first()
     if not img:
         return 'Img Not Found!', 404
+    print(img.img)
 
     return Response(img.img, mimetype=img.mimetype)
 
+attribute = ''
+
+@app.route('/getRandomImage')
+def getRandom():
+    queryLen = len(Img.query.all())
+    id_random = random.randint(1,queryLen)
+    img = Img.query.filter_by(id=id_random).first()
+    global attribute 
+    attribute = img.class_type
+    return Response(img.img, mimetype=img.mimetype)
+
+@app.route('/getRandomImage/attribute', methods=['GET'])
+def getAttrib():
+    return {
+        'attrib': attribute
+    }
 if __name__ == "__main__":
     app.run(debug=True)
