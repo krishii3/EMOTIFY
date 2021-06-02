@@ -37,12 +37,19 @@ btnHAPPY.addEventListener('click',()=>checkInput('happy'))
 btnFEARFUL.addEventListener('click',()=>checkInput('fearful'))
 
 
+const getRandomImage = async () => {
+    const img = await fetch('/getRandomImage').then(res => res.blob())
+    return img
+}
+
 const photobox = document.querySelector('#photobox')
 const next = document.querySelector('#next')
-next.addEventListener('click',()=>{
-    photobox.innerHTML = ''
+next.addEventListener('click', async()=>{
+    photobox.textContent = ''
     const img = new Image()
-    img.src = '/getRandomImage'
+    const dataUrl = await getRandomImage()
+    const myBlob = URL.createObjectURL(dataUrl)
+    img.src  = myBlob
     photobox.appendChild(img)
 })
 
