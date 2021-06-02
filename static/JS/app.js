@@ -37,10 +37,12 @@ btnHAPPY.addEventListener('click',()=>checkInput('happy'))
 btnFEARFUL.addEventListener('click',()=>checkInput('fearful'))
 
 
-const img = document.querySelector('#randomImage')
-
+const photobox = document.querySelector('#photobox')
 const next = document.querySelector('#next')
 next.addEventListener('click',()=>{
-    localStorage.clear()
+    photobox.innerHTML = ''
+    const img = new Image()
+    img.src = '/getRandomImage'
+    photobox.appendChild(img)
 })
 
