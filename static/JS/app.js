@@ -50,6 +50,8 @@ next.addEventListener('click', async()=>{
     const dataUrl = await getRandomImage()
     const myBlob = URL.createObjectURL(dataUrl)
     img.src  = myBlob
+    img.width = '200'
+    img.height = '200'
     photobox.appendChild(img)
 })
 
