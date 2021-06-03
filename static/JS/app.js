@@ -17,11 +17,7 @@ const addUserTimeTaken = (usedTime) => {
     userTime.push(usedTime)
     localStorage.setItem("userTime", JSON.stringify(userTime))
 }
-const stopTimer = () => {
-    countDown.stop()
-    countViz.stop()
-    disableInput()
-}
+
 
 const disableInput = () => {
     btnANGRY.setAttribute("disabled",true)
@@ -148,6 +144,41 @@ const fetchAttribute = async ()=> {
         method: 'GET'
     }).then(res => res.json())
 }
+
+
+const getRandomImage = async () => {
+    const img = await fetch('/getRandomImage').then(res => res.blob())
+    return img
+}
+
+const photobox = document.querySelector('#photobox')
+const next = document.querySelector('#next')
+const time = document.querySelector('#time')
+let countDown, countViz
+
+const stopTimer = () => {
+    countDown.stop()
+    countViz.stop()
+    disableInput()
+}
+
+next.addEventListener('click', async()=>{
+    enableInput()
+    photobox.textContent = ''
+    const img = new Image()
+    const dataUrl = await getRandomImage()
+    const myBlob = URL.createObjectURL(dataUrl)
+    img.src  = myBlob
+    img.width = '200'
+    img.height = '200'
+    photobox.appendChild(img)
+    countDown = new Countdown(time, 5)
+    countViz = new timerCountDown()
+    countDown.start()
+    countViz.start()
+})
+
+
 const checkInput = async (attrib)=>{
     const data = await fetchAttribute()
     if(!data.attrib) {
@@ -167,29 +198,3 @@ btnNEUTRAL.addEventListener('click',()=>checkInput('neutral'))
 btnSAD.addEventListener('click',()=>checkInput('sad'))
 btnHAPPY.addEventListener('click',()=>checkInput('happy'))
 btnFEARFUL.addEventListener('click',()=>checkInput('fearful'))
-
-
-const getRandomImage = async () => {
-    const img = await fetch('/getRandomImage').then(res => res.blob())
-    return img
-}
-
-const photobox = document.querySelector('#photobox')
-const next = document.querySelector('#next')
-const time = document.querySelector('#time')
-let countDown, countViz
-next.addEventListener('click', async()=>{
-    enableInput()
-    photobox.textContent = ''
-    const img = new Image()
-    const dataUrl = await getRandomImage()
-    const myBlob = URL.createObjectURL(dataUrl)
-    img.src  = myBlob
-    img.width = '200'
-    img.height = '200'
-    photobox.appendChild(img)
-    countDown = new Countdown(time, 5)
-    countViz = new timerCountDown()
-    countDown.start()
-    countViz.start()
-})
