@@ -149,7 +149,6 @@ const fetchAttribute = async ()=> {
     }).then(res => res.json())
 }
 const checkInput = async (attrib)=>{
-    stopTimer()
     const data = await fetchAttribute()
     if(!data.attrib) {
         let message = "something went wrong, please restart your game."
@@ -158,6 +157,7 @@ const checkInput = async (attrib)=>{
         attrib === data.attrib ? counter+=1 : ''
     }
     updateCounter()
+    stopTimer()
 }
 
 btnANGRY.addEventListener('click', async()=>checkInput('angry'))
