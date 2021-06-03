@@ -6,8 +6,9 @@ const btnSAD = document.querySelector('#btnSAD')
 const btnHAPPY = document.querySelector('#btnHAPPY')
 const btnFEARFUL = document.querySelector('#btnFEARFUL')
 let counter = 0
-
+localStorage.setItem("userTime", JSON.stringify([]))
 // HELPER FUNCTIONSS
+
 
 const addUserTimeTaken = (usedTime) => {
     let userTime = []
@@ -156,11 +157,7 @@ const next = document.querySelector('#next')
 const time = document.querySelector('#time')
 let countDown, countViz
 
-const stopTimer = () => {
-    countDown.stop()
-    countViz.stop()
-    disableInput()
-}
+
 
 next.addEventListener('click', async()=>{
     enableInput()
@@ -178,6 +175,11 @@ next.addEventListener('click', async()=>{
     countViz.start()
 })
 
+const stopTimer = () => {
+    countDown.stop()
+    countViz.stop()
+    disableInput()
+}
 
 const checkInput = async (attrib)=>{
     const data = await fetchAttribute()
@@ -187,8 +189,8 @@ const checkInput = async (attrib)=>{
     } else {
         attrib === data.attrib ? counter+=1 : ''
     }
-    updateCounter()
     stopTimer()
+    updateCounter()
 }
 
 btnANGRY.addEventListener('click', async()=>checkInput('angry'))
