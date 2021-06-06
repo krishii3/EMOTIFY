@@ -12,51 +12,51 @@
         <div class = "header">
             <h1>EMOTIFY</h1>
         </div>
-        <div class = "canvas">
-            <div id="leftpart" class= "leftpart">
-                <div id="photobox" class= "photobox">
-                </div>
+        <div class="emoji__container">
+            <div class="row-upper">
+                <img title="angry" src="{{ url_for('static', filename='./img/angry.png') }}" alt="image-angry">
+                <img title="disgusted" src="{{ url_for('static', filename='./img/disgusted.png') }}" alt="image-disgusted">
+                <img title="fearful" src="{{ url_for('static', filename='./img/fearful.png') }}" alt="image-fearful">
+                <img title="happy" src="{{ url_for('static', filename='./img/happy.png') }}" alt="image-happy">
             </div>
-            <div id="rightpart" class= "rightpart">
-                <div class="row">
-                    <button id="btnSURPRISED" class="btn SURPRISED">SURPRISED</button>
-                    <button id="btnDISGUSTED" class="btn DISGUSTED">DISGUSTED</button>
-                    <button id="btnNEUTRAL" class="btn NEUTRAL">NEUTRAL</button>
-                </div>
-                <div class="row">
-                    <button id="btnANGRY" class="btn ANGRY">ANGRY</button>
-                    <button id="btnSAD" class="btn SAD">SAD</button>
-                    <button id="btnHAPPY" class="btn HAPPY">HAPPY</button>
-                    <button id="btnFEARFUL" class="btn FEARFUL">FEARFUL</button>
-                </div>   
-                
-            </div>
-            
-        </div>
-
-        <div class="controller">
-            <div class="timer">
-                <h4>timer :&nbsp;&nbsp;</h4>
-                <div class="timer__bar"  >
-                    <div id="timerBar">
-                    </div>
-                </div>
-                <div class="timerText">
-                    <span id="time">05:00</span>
-                </div>
-            </div>
-            <div class="counter">
-                <h4> &#x2605; <span id="counter">0</span></h4>
-            </div>
-            <div class="next">
-                <button class="btn next--btn" id="next">next</button>
-            </div>
-            <div class="end">
-                <button class="btn end--btn" id="end">end</button>
+            <div class="row-lower">
+                <img title="neutral" src="{{ url_for('static', filename='./img/neutral.png') }}" alt="image-neutral">
+                <img title="sad" src="{{ url_for('static', filename='./img/sad.png') }}" alt="image-sad">
+                <img title="surprise" src="{{ url_for('static', filename='./img/surprise.png') }}" alt="image-surprise">
             </div>
         </div>
-
+        <div class="info__container">
+            <div class="howtobox">
+                <h2 class="howto-heading">How to play</h2>
+                <ul class="bullets">
+                    <li class="points">Match the shown image with the correct emotions to score points</li>
+                    <li class="points">You gain 1 point for each correct match</li>
+                    <li class="points">You'll have 5 seconds for each round</li>
+                    <li class="points">You'll be judged on your time and correctness</li>
+                </ul>
+            </div>
+            <div class="playbox">
+                <h2 class="playbox-heading">Play right now.</h2>
+                <div class="gameplay">
+                    <button id="startGame" class="btn btn-start"> Start </button>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="{{ url_for('static',filename='./JS/app.js')}}"></script>
+    <!-- <script src="{{ url_for('static',filename='./JS/app.js')}}"></script> -->
+    <script>
+        const imgs = document.querySelectorAll('img')
+        imgs.forEach(img => {
+            img.classList.add('animemo')
+            img.width = 50
+            img.height = 50
+        })
+        const startGame = document.querySelector('#startGame')
+        startGame.addEventListener('click',()=> {
+            // location.href = '/game'
+            // window.open('/game', "_blank", "width = 1920, height = 1080")
+            window.open('/game')
+        })
+    </script>
 </body>
 </html>
