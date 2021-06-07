@@ -1,4 +1,3 @@
-
 def results(trait,trait_name):
     if(trait>=0.60 and trait<0.90):
         return("Fairly good in " + trait_name)
@@ -25,7 +24,7 @@ def algo(data):
     unified=(accuracy+time+ps)/3
 
     total_traits={"accuracy":accuracy,"time":time,"Problem Solving":ps,"unified":unified}
-    print(total_traits)
+    # print(total_traits)
 
     Final_analysis=[]
     for i,j in (total_traits.items()):
@@ -33,8 +32,8 @@ def algo(data):
             continue
         Final_analysis.append(results(j, i))
     
-    for a in Final_analysis:
-        print(a)
+    # for a in Final_analysis:
+    #     print(a)
 
 
 

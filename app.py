@@ -4,7 +4,7 @@ import json
 from db import db_init, db
 from model import Img
 import random
-from algo import algo
+from algo import algo, algo
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///img.db'
