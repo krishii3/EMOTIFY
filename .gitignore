@@ -3,3 +3,4 @@
 app.spec
 /dataset
 img.db
+/env
