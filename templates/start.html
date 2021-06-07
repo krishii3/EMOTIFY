@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMOTIFY</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='./css/style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class = "header">
+            <h1>EMOTIFY</h1>
+        </div>
+        <div class = "canvas">
+            <div id="leftpart" class= "leftpart">
+                <div id="photobox" class= "photobox">
+                </div>
+            </div>
+            <div id="rightpart" class= "rightpart">
+                <div class="row">
+                    <button id="btnSURPRISED" class="btn SURPRISED">SURPRISED &ensp;<img src="{{ url_for('static', filename='./img/surprise.png') }}" alt="surprise"> </button>
+                    <button id="btnDISGUSTED" class="btn DISGUSTED">DISGUSTED &ensp;<img src="{{ url_for('static', filename='./img/disgusted.png') }}" alt="disgusted"></button>
+                    <button id="btnNEUTRAL" class="btn NEUTRAL">NEUTRAL &ensp;<img src="{{ url_for('static', filename='./img/neutral.png') }}" alt="neutral"></button>
+                </div>
+                <div class="row">
+                    <button id="btnANGRY" class="btn ANGRY">ANGRY &ensp;<img src="{{ url_for('static', filename='./img/angry.png') }}" alt="angry"></button>
+                    <button id="btnSAD" class="btn SAD">SAD &ensp;<img src="{{ url_for('static', filename='./img/sad.png') }}" alt="sad"></button>
+                    <button id="btnHAPPY" class="btn HAPPY">HAPPY &ensp;<img src="{{ url_for('static', filename='./img/happy.png') }}" alt="happy"></button>
+                    <button id="btnFEARFUL" class="btn FEARFUL">FEARFUL &ensp;<img src="{{ url_for('static', filename='./img/fearful.png') }}" alt="fearful"></button>
+                </div>   
+                
+            </div>
+            
+        </div>
+
+        <div class="controller">
+            <div class="timer">
+                <h4>timer :&nbsp;&nbsp;</h4>
+                <div class="timer__bar"  >
+                    <div id="timerBar">
+                    </div>
+                </div>
+                <div class="timerText">
+                    <span id="time">05:00</span>
+                </div>
+            </div>
+            <div class="counter">
+                <h4> &#x2605; <span id="counter">0</span></h4>
+            </div>
+            <div class="next">
+                <button class="btn next--btn" id="next">start/next</button>
+            </div>
+            <div class="end">
+                <button class="btn end--btn" id="end">end</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="{{ url_for('static',filename='./JS/app.js')}}"></script>
+</body>
+</html>

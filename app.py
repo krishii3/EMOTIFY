@@ -15,6 +15,10 @@ db_init(app)
 def index():
     return render_template("index.html")
 
+@app.route('/game')
+def gamePlay():
+    return render_template("start.html")
+
 @app.route('/uploadFile')
 def uploadFile():
     return render_template("upload.html")
