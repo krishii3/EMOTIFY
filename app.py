@@ -4,6 +4,7 @@ import json
 from db import db_init, db
 from model import Img
 import random
+from algo import algo
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///img.db'
@@ -80,5 +81,15 @@ def getAttrib():
     return {
         'attrib': attribute
     }
+
+@app.route('/get_data', methods=["POST","GET"])
+def getAPI():
+    data= json.loads(request.data)
+    res = algo(data)
+    return {
+        "success" : True,
+        "res": res
+    }
+
 if __name__ == "__main__":
     app.run(debug=True)

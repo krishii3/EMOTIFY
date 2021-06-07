@@ -216,3 +216,29 @@ emojis.forEach(img => {
     img.width = 20
     img.height = 20
 })
+
+//end buttom
+
+btnEnd.addEventListener('click',()=>{
+    
+
+
+const data = {
+    array: JSON.parse(localStorage.getItem("userTime")),
+    score: counter
+}
+fetch('/get_data',{
+    method: "POST",
+    headers: {
+        'Content_type': 'application/json'
+    },
+    body: JSON.stringify(data)
+})
+.then(res => res.json())
+.then(res => {
+    console.log(res.res)
+    //showData(res.res)
+    localStorage.setItem("userTime",'')
+})
+
+})
