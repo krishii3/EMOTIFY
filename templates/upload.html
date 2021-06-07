@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>uploadFile</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='./css/uploadfile.css')}}">
 </head>
 <body>
-    <form id="uploadForm" method="POST" action="/upload" enctype="multipart/form-data"> 
-        <input type="file" name="pic" required/>
-        <select name = "attrib" required>
-            <option>select</option>
-            <option value="sad">sad</option>
+    <div class="div">
+        <span id="message"></span>
+    </div>
+    <div class="drag-area">
+        <header style="font-size: 20px;">Choose the emotion before uploading image.</header>
+        <select class="dropdown" id="select">
+            <option value="sad" selected>sad</option>
             <option value="happy">happy</option>
             <option value="angry">angry</option>
             <option value="surprised">surprised</option>
@@ -19,7 +22,13 @@
             <option value="neutral">neutral</option>
             <option value="disgusted">disgusted</option>
         </select>
-        <input type="submit" value="Upload"/>
-     </form>
+        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <header>Drag & Drop to Upload File</header>
+        <span>OR</span>
+        <button>Browse File</button>
+        <input type="file" hidden>
+      </div>
+    
+      <script src="{{ url_for('static',filename='./JS/upload.js')}}"></script>
 </body>
 </html>

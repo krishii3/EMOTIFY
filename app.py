@@ -27,6 +27,7 @@ def uploadFile():
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    # print(request.data['file'])
     pic = request.files['pic']
     class_type = (request.form.to_dict()['attrib'])
     if not pic:
@@ -51,7 +52,7 @@ def upload():
 
     return {
         'success': True,
-        'message': 'Hogyi h upload.',
+        'message': 'sucessfully uploaded',
         'resCode': 200
     }
 
